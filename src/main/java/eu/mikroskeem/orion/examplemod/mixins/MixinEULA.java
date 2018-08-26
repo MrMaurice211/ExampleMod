@@ -32,7 +32,7 @@ public abstract class MixinEULA {
      * @param file
      * @return
      */
-    @Overwrite
+    //@Overwrite
     private boolean a(File file) {
         return true;
     }
@@ -42,6 +42,6 @@ public abstract class MixinEULA {
      *
      * @author Mark Vainomaa
      */
-    @Overwrite
+    //@Overwrite
     public void b() {}
 }
