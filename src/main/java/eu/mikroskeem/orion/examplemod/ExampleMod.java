@@ -16,7 +16,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 
-
 /**
  * Orion example mod
  *
@@ -24,6 +23,17 @@ import java.nio.file.StandardOpenOption;
  */
 @OrionMod(id = "examplemod")
 public final class ExampleMod {
+
+    public Logger getLogger() {
+        return logger;
+    }
+
+    public static ExampleMod getInstance() {
+        return instance;
+    }
+
+    private static ExampleMod instance;
+
     @Inject private Logger logger;
     @Inject private Orion orion;
     @Inject @Named("configurationPath") private Path configurationPath;
@@ -32,6 +42,7 @@ public final class ExampleMod {
 
     @Subscribe
     public void on(ModConstructEvent e) throws Exception {
+        instance = this;
         logger.info("Hello world!");
         if(Files.notExists(configurationPath)) {
             Files.write(
